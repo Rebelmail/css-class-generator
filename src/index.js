@@ -1,6 +1,6 @@
 'use strict'; // eslint-disable-line
 
-const validFirstCharacters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz_';
+const validFirstCharacters = 'abcdefghijklmnopqrstuvwxyz_';
 const validSecondCharacters = `${validFirstCharacters}0123456789-`;
 
 function* firstCharacters() {
