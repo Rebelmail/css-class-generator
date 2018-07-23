@@ -1,7 +1,7 @@
 'use strict'; // eslint-disable-line
 
-const validFirstCharacters = 'abcdefghijklmnopqrstuvwxyz_';
-const validSecondCharacters = `${validFirstCharacters}0123456789-`;
+const validFirstCharacters = 'abcdefghijklmnopqrstuvwxyz';
+const validSecondCharacters = `${validFirstCharacters}0123456789`;
 
 function* firstCharacters() {
   yield* validFirstCharacters;
@@ -46,11 +46,6 @@ function* allSecondCharacters() {
   }
 }
 
-function* firstTwoChars() {
-  yield* prepend('-', firstCharacters());
-  yield* appendGenerator(firstCharacters, secondCharacters());
-}
-
 const validIdent = /^-?[_a-z][_a-z0-9-]*$/i;
 
 module.exports = function* cssNameGenerator(prefix) {
@@ -60,8 +55,7 @@ module.exports = function* cssNameGenerator(prefix) {
 
   if (!prefix) {
     yield* firstCharacters();
-    yield* firstTwoChars();
-    yield* appendGenerator(firstTwoChars, allSecondCharacters());
+    yield* appendGenerator(firstCharacters, allSecondCharacters());
   } else if (prefix === '-') {
     const firstSecondChars = appendGenerator(firstCharacters, allSecondCharacters());
     yield* prepend(prefix, firstSecondChars);
