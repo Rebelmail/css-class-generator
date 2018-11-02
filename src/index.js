@@ -1,4 +1,4 @@
-'use strict'; // eslint-disable-line
+/* eslint-disable no-restricted-syntax */
 
 const validFirstCharacters = 'abcdefghijklmnopqrstuvwxyz';
 const validSecondCharacters = `${validFirstCharacters}0123456789`;

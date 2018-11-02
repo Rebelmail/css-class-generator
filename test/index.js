@@ -5,7 +5,7 @@ const cssNameGenerator = require('../src');
 const validIdent = /^-?[_a-z][_a-z0-9-]*$/i;
 const numToTest = 1E6;
 
-test('generate name', t => {
+test('generate name', (t) => {
   const generator = cssNameGenerator();
   for (let i = 0; i < numToTest; i += 1) {
     const { value } = generator.next();
@@ -14,7 +14,7 @@ test('generate name', t => {
   }
 });
 
-test('generate name with hyphen prefix', t => {
+test('generate name with hyphen prefix', (t) => {
   const generator = cssNameGenerator('-');
   for (let i = 0; i < numToTest; i += 1) {
     const { value } = generator.next();
@@ -23,7 +23,7 @@ test('generate name with hyphen prefix', t => {
   }
 });
 
-test('generate name with other prefix', t => {
+test('generate name with other prefix', (t) => {
   const generator = cssNameGenerator('test');
   for (let i = 0; i < numToTest; i += 1) {
     const { value } = generator.next();
@@ -32,11 +32,11 @@ test('generate name with other prefix', t => {
   }
 });
 
-test('allows hyphen for class name', t => {
+test('allows hyphen for class name', (t) => {
   t.notThrows(() => { cssNameGenerator('-').next(); });
 });
 
-test('throws for invalid class name', t => {
+test('throws for invalid class name', (t) => {
   t.throws(() => { cssNameGenerator('--').next(); });
   t.throws(() => { cssNameGenerator('0').next(); });
 });
